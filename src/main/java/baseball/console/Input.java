@@ -57,12 +57,12 @@ public class Input {
     }
 
     private static void validateinputIntThree(String input) {
-        if (!input.matches("\\d{3}")) {
+        if (!input.matches("\\d{3}") || !(input.length() == 3)) {
             throw new IllegalArgumentException("올바르지 않은 입력입니다. ");
         }
     }
     private static void validateinputIntOne(String input) {
-        if (!input.matches("\\d{1}")) {
+        if (!input.matches("\\d{1}") || !(input.length() == 1)) {
             throw new IllegalArgumentException("올바르지 않은 입력입니다. ");
         }
     }
