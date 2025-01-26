@@ -20,11 +20,15 @@ public class Output {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
         } else {
-            System.out.print(ball != 0 ? ball + "볼" : "");
+            System.out.print(ball != 0 ? ball + "볼 " : "");
 
             System.out.println(strike != 0 ? strike + "스트라이크" : "");
 
             System.out.println("");
         }
+    }
+
+    public static void printEndGame() {
+        System.out.println("게임 종료");
     }
 }

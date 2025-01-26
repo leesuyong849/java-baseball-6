@@ -1,5 +1,6 @@
 package baseball.console;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import static baseball.console.Output.printAskThreeNum;
@@ -7,33 +8,27 @@ import static baseball.console.Output.printAskThreeNum;
 public class Input {
 
     public static int[] AskThreeNum(Scanner scanner) {
+        int[] num  = new int[3];
 
-        int[] num = new int[3];
+        printAskThreeNum();
+        String input = scanner.nextLine();
 
-        while (true) {
-            printAskThreeNum();
-            String input = scanner.nextLine();
+        //입력된 값이 숫자로 변환가능한지 확인
+        validateinputIntThree(input);
 
-            //입력된 값이 숫자로 변환가능한지 확인
-            validateinputIntThree(input);
+        // 3자리 숫자로 변환
+        int number = Integer.parseInt(input);
+        num[0] = number / 100;          // 백의 자리
+        num[1] = (number / 10) % 10;     // 십의 자리
+        num[2] = number % 10;            // 일의 자리
 
-            // 3자리 숫자로 변환
-            int number = Integer.parseInt(input);
-            num[0] = number / 100;          // 백의 자리
-            num[1] = (number / 10) % 10;     // 십의 자리
-            num[2] = number % 10;            // 일의 자리
-
-            //각 숫자가 다른 숫자인지 확인
-            validateInputDistinct(num);
-
-            break;
-        }
+        //각 숫자가 다른 숫자인지 확인
+        validateInputDistinct(num);
 
         return num;
     }
 
-    public static Boolean AskOneMoreGame() {
-        Scanner scanner = new Scanner(System.in);
+    public static Boolean AskOneMoreGame(Scanner scanner) {
         String input = scanner.nextLine();
 
         validateinputIntOne(input);

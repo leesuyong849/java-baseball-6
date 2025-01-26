@@ -13,30 +13,29 @@ import static baseball.console.Output.printStartMessage;
 
 public class Game {
 
-    public void play() {
+    public void play(Scanner scanner) {
 
-        Scanner scanner = new Scanner(System.in);
+
+
+        //컴퓨터의 숫자 생성: 서로다른 3개의 수
+        Computer computer = new Computer();
 
         printStartMessage();
 
         while (true) {
             //게임을 계속해야 하는가?
-            Boolean flag = false;
-
-            flag = doOneGame(scanner);
+            boolean flag = doOneGame(scanner, computer);
 
             if (flag) {
                 break;
             }
         }
-        scanner.close();
+//        scanner.close();
 
     }
 
-    private static Boolean doOneGame(Scanner scanner) {
+    private static Boolean doOneGame(Scanner scanner, Computer computer) {
 
-        //컴퓨터의 숫자 생성: 서로다른 3개의 수
-        Computer computer = new Computer();
 
         //사용자로부터 입력받기
         int[] input = AskThreeNum(scanner);
